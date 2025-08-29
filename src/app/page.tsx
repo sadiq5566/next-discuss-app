@@ -1,9 +1,19 @@
-import Image from "next/image";
+import PostList from "@/components/posts/post-list";
+import TopicCreateForm from "./topics/TopicCreateForm";
+import { fetchTopPosts } from "@/lib/query/post";
 
-export default function Home() {
+
+export default async function Home() {
+
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="grid grid-cols-4 gap-4 p-4">
+      <div className="col-span-3">
+        <h1 className="text-xl font-bold m-2">Top Posts</h1>
+        <PostList fetchData={fetchTopPosts} />
+      </div>
+      <div>
+        <TopicCreateForm />
+      </div>
     </div>
   );
 }
